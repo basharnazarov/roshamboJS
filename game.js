@@ -83,7 +83,7 @@ if (duplicates.length !== 0) {
             readline.close();
         },
     };
-
+    
     steps.start();
 
     readline.on("close", () => {
@@ -103,25 +103,9 @@ if (duplicates.length !== 0) {
                 args.splice(idx, 1);
                 lose = args;
             }
-
-            // console.log(
-            //   "half:",
-            //   half,
-            //   "Computer's move:",
-            //   comMove,
-            //   "center:",
-            //   center,
-            //   "win:",
-            //   win,
-            //   "lose:",
-            //   lose
-            // );
-
             console.log(
                 `Your move: ${moves[userMove - 1]}`,
-
                 `\nComputer's move: ${moves[comMove - 1]}`,
-
                 comMove === userMove
                     ? "\nDraw!!!"
                     : win.includes(userMove)
