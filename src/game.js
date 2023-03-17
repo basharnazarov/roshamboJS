@@ -4,6 +4,8 @@ const readline = require("readline").createInterface({
   output: process.stdout,
 });
 const { randomBytes, createHmac } = require("node:crypto");
+const {tableBuilder} = require('./table')
+
 
 const duplicates = moves.filter((item, index) => moves.indexOf(item) !== index)
 
@@ -17,7 +19,8 @@ if(duplicates.length !== 0){
   console.error("\x1b[31m",'The amount of arguments must be equal or more than 3!', "\x1b[0m")
   process.exit()
 } else {
-  let args = [];
+
+let args = [];
 let lose; 
 let win;
 
@@ -75,7 +78,7 @@ readline.on("close", () => {
   if (userMove === "0") {
     process.exit();
   } else if (userMove === "?") {
-    console.table({user1: {com1: 'draw', com2: 'U',com3: 'C'}})
+    tableBuilder(moves)
   } else {
     if (comMove > center) {
       lose = args.splice(comMove - half - 1, half);
@@ -89,24 +92,24 @@ readline.on("close", () => {
       lose = args;
     }
 
-    console.log(
-      "half:",
-      half,
-      "Computer's move:",
-      comMove,
-      "center:",
-      center,
-      "win:",
-      win,
-      "lose:",
-      lose
-    );
+    // console.log(
+    //   "half:",
+    //   half,
+    //   "Computer's move:",
+    //   comMove,
+    //   "center:",
+    //   center,
+    //   "win:",
+    //   win,
+    //   "lose:",
+    //   lose
+    // );
 
     console.log(
       `Your move: ${moves[userMove - 1]}`,
-      userMove,
+      
       `\nComputer's move: ${moves[comMove - 1]}`,
-      comMove,
+      
       comMove === userMove
         ? "\nDraw!!!"
         : win.includes(userMove)
