@@ -12,10 +12,20 @@ if (duplicates.length !== 0) {
     console.log("\x1b[31m", "Arguments must be unique!", "\x1b[0m");
     process.exit();
 } else if (moves.length % 2 === 0) {
-    console.log("\x1b[31m", "The amount of arguments must be odd!", "\x1b[0m");
+    moves.length === 0
+        ? console.log(
+              "\x1b[31m",
+              "The amount of arguments must be equal or more than 3!",
+              "\x1b[0m"
+          )
+        : console.log(
+              "\x1b[31m",
+              "The amount of arguments must be odd!",
+              "\x1b[0m"
+          );
     process.exit();
 } else if (moves.length < 3) {
-    console.error(
+    console.log(
         "\x1b[31m",
         "The amount of arguments must be equal or more than 3!",
         "\x1b[0m"
